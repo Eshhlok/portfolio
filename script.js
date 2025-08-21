@@ -55,7 +55,8 @@ if (contactForm) {
     console.error("Error saving message: ", error);
     alert("Failed to send message. Please try again.")
   }
-});
+  });
+}
 
 // Display stored messages
 function displayUserMessages() {
