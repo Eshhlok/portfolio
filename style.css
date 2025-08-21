@@ -1,0 +1,197 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background-color: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  background-color: #2563eb;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0.5rem 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+  
+/*nav ul li a:hover {
+  color: #e0f2fe;
+}*/
+nav ul li a:hover {
+  color:black;
+  font-size:22px;
+  border:2px;
+  border-style:solid;
+  border-color:#28f7e7;
+  border-radius:6px;
+  padding:2px;
+}
+#toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.sections {
+  padding: 2rem;
+  margin: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.sections h2 {
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+ul {
+  padding-left: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: auto;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #1e40af;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  background-color: #1f2937;
+  color: white;
+  border-radius: 0 0 12px 12px;
+}
+
+.dark-mode {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.dark-mode header,
+.dark-mode nav,
+.dark-mode footer {
+  background-color: #0f172a;
+}
+
+.dark-mode nav ul li a {
+  color: #f8fafc;
+}
+
+.dark-mode nav ul li a:hover {
+  color: #93c5fd;
+}
+
+.dark-mode .sections {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark-mode .sections h2 {
+  color: #93c5fd;
+  border-bottom: 2px solid #93c5fd;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background-color: #475569;
+  color: #f8fafc;
+  border-color: #64748b;
+}
+
+.dark-mode form button {
+  background-color: #0ea5e9;
+}
+
+.dark-mode form button:hover {
+  background-color: #0284c7;
+}
+.dark-mode #project h3 a{
+  text-decoration:none;
+  color:#e2e8f0;
+}
+#project h3 a{
+  text-decoration:none;
+  color:black;
+}
+ .footer-icons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+}
+ .footer-icons a {
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+ }
+ .footer-icons a:hover {
+      color: #00bcd4;
+      transform: scale(1.1);
+ }
