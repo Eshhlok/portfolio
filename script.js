@@ -32,22 +32,30 @@ if (adminForm) {
 // Handle Contact Form
 const contactForm = document.getElementById("contact_form");
 if (contactForm) {
-  contactForm.addEventListener("submit", function (e) {
+  contactForm.addEventListener("submit", async (e)=> {
     e.preventDefault();
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const msg = document.getElementById("msg").value;
     const date = new Date().toLocaleString();
 
-    const response = { name, email, msg, date };
-    const DummyDatabase = JSON.parse(localStorage.getItem("tempDB")) || [];
-    DummyDatabase.push(response);
-    localStorage.setItem("tempDB", JSON.stringify(DummyDatabase));
+     try {
+    // Add to Firestore
+    await db.collection("messages").add({
+      name,
+      email,
+      msg,
+      date
+    });
 
     alert("Thank you for your message!");
     contactForm.reset();
-  });
-}
+  }
+  catch (error) {
+    console.error("Error saving message: ", error);
+    alert("Failed to send message. Please try again.")
+  }
+});
 
 // Display stored messages
 function displayUserMessages() {
