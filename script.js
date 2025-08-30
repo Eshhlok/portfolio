@@ -23,7 +23,7 @@ function showSection(id) {
   const section = document.getElementById(id);
   if (section) section.style.display = "block";
 }
-
+window.showSection = showSection;
 // Handle Admin Login
 const adminForm = document.getElementById("admin-form");
 if (adminForm) {
