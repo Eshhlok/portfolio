@@ -1,3 +1,17 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDhWBybiOxuy_ydLpzY_UiJUCM8X4rm5A4",
+  authDomain: "eshlok-portfolio-458df.firebaseapp.com",
+  projectId: "eshlok-portfolio-458df",
+  storageBucket: "eshlok-portfolio-458df.firebasestorage.app",
+  messagingSenderId: "75188744480",
+  appId: "1:75188744480:web:4e356e733364f7d5d76745",
+  measurementId: "G-2MS8B2GPQ5"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // Toggle dark mode
 const toggle = document.getElementById("toggle-button");
 toggle.addEventListener('click', () => {
@@ -41,11 +55,11 @@ if (contactForm) {
 
      try {
     // Add to Firestore
-    await db.collection("messages").add({
+    await addDoc(collection(db, "messages"),{
       name,
       email,
       msg,
-      date
+      date,
     });
 
     alert("Thank you for your message!");
@@ -59,20 +73,25 @@ if (contactForm) {
 }
 
 // Display stored messages
-function displayUserMessages() {
+async function displayUserMessages() {
   const container = document.getElementById("user-messages");
-  const messages = JSON.parse(localStorage.getItem("tempDB")) || [];
+  container.innerHTML = ""; // Clear old
 
-  container.innerHTML = ""; // Clear previous
-  messages.forEach(({ name, email, msg, date }) => {
-    const entry = document.createElement("div");
-    entry.innerHTML = `
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong> ${msg}</p>
-      <p><strong>Date:</strong> ${date}</p>
-      <hr />
-    `;
-    container.appendChild(entry);
-  });
+  try {
+    const querySnapshot = await getDocs(collection(db, "messages"));
+    querySnapshot.forEach((doc) => {
+      const { name, email, msg, date } = doc.data();
+      const entry = document.createElement("div");
+      entry.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${msg}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <hr />
+      `;
+      container.appendChild(entry);
+    });
+  } catch (error) {
+    console.error("Error fetching messages: ", error);
+  }
 }
